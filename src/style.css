@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+body:has(.lightMode) {
+    --color-text-main: #494C6B;
+    --color-text-muted: #9495A5;
+    --color-text-completed: #D1D2DA;
+    --color-border: #E3E4F1;
+    --text-hover: #494C6B;
+    --color-shadow: #C2C3D680;
+    --back-color: #fff;
+    --todo-back: #fff;
+    --todo-color: #9495A5;
+    --backImage: url(./assets/lightBack.svg);
+}
+
+
+body:has(.darkMode) {
+    --color-text-main: #C8CBE7;
+    --color-text-muted: #5B5E7E;
+    --color-text-completed: #4D5067;
+    --color-border: #393A4B;
+    --text-hover: #E3E4F1;
+    --color-shadow: #00000080;
+    --back-color: #171823;
+    --todo-back: #25273D;
+    --todo-color: #767992;
+    --backImage: url(./assets/darkBack.svg);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    transition: all ease-in-out .2s;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 541px;
+    padding: 70px 0 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-family: 'Josefin Sans', 'Courier New', Courier, monospace;
+    background-image: var(--backImage);
+    background-color: var(--back-color);
+}
+
+img {
+    user-select: none;
+}
+
+input,
+button {
+    font-family: 'Josefin Sans', 'Courier New', Courier, monospace;
+    cursor: pointer;
+}
+
+.titleBox {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    text-transform: uppercase;
+    letter-spacing: 15px;
+    color: #fff;
+    align-items: flex-start;
+}
+
+.titleBox img {
+    align-items: center;
+}
+
+.err {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.radioBox.active {
+    background-image: url(./assets/checked.svg);
+    border: none;
+    border-radius: 50%;
+}
+
+.radioBox {
+    background-image: none;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all ease-in-out .2s;
+}
+
+.newTodoBox {
+    background-color: var(--todo-back);
+    box-shadow: 0px 35px 50px -15px var(--color-shadow);
+    border-radius: 5px;
+    margin: 40px 0 24px 0;
+}
+
+form {
+    display: flex;
+    gap: 24px;
+}
+
+#form{
+    padding: 23px;
+}
+
+button {
+    background: none;
+}
+
+.newTodoBox input[type='text'] {
+    border: none;
+    background-color: var(--todo-back);
+    font-size: 18px;
+    width: 400px;
+    color: var(--todo-color);
+}
+
+.newTodoBox input[type='text']:focus {
+    outline: none;
+}
+
+input[type='checkbox'] {
+    display: none;
+}
+
+.todolist li {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px var(--color-border) solid;
+}
+
+.todolist li:hover .x {
+    display: inline;
+}
+
+.todolist li label {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todoVal {
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: -0.25px;
+    color: var(--color-text-main);
+    transition: all ease-in-out .2s;
+}
+
+.listmain {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.todos {
+    background-color: var(--todo-back);
+    box-shadow: 0px 35px 50px -15px var(--color-shadow);
+    border-radius: 5px;
+    margin-bottom: 49px;
+}
+
+.x {
+    display: none;
+    transition: all ease-in-out .2s;
+}
+
+li {
+    list-style: none;
+}
+
+button {
+    border: none;
+    user-select: none;
+}
+
+li label:has(.radioBox.active) .todoVal {
+    color: var(--color-text-completed);
+    text-decoration: line-through;
+}
+
+.report,
+.filter {
+    display: flex;
+}
+
+input[type='radio'] {
+    display: none;
+}
+
+.report {
+    justify-content: space-between;
+    padding: 16px 24px 20px 24px;
+}
+
+.filter {
+    gap: 18px;
+}
+
+.filter form label p {
+    cursor: pointer;
+    color: var(--color-text-muted);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -0.19px;
+    user-select: none;
+}
+
+.filter form label:has(input:checked) p {
+    color: #3A7CFD;
+}
+
+.filter form label p:hover{ 
+    color: var(--text-hover);
+}
+
+.report button,
+.itemsLength {
+    color: var(--color-text-muted);
+    letter-spacing: -0.19px;
+    font-weight: 400;
+    font-size: 14px;
+    transition: all ease-in-out .3s;
+}
+
+.report button:hover {
+    color: var(--color-text-main);
+}
+
+button:focus-visible {
+    outline: none;
+}
+
+.proTip {
+    user-select: none;
+    text-align: center;
+    color: var(--color-text-muted);
+    letter-spacing: -0.19px;
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 52px;
+}
